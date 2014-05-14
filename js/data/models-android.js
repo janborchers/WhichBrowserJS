@@ -1,4 +1,8 @@
-    var ANDROID_MODELS = {
+/*global TYPE_TELEVISION*/
+/*global TYPE_EMULATOR*/
+/*global TYPE_TABLET*/
+
+var ANDROID_MODELS = {
 
     /* Generic identifiers */
     'Android': [ null, null ],

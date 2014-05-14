@@ -93,7 +93,7 @@ var ANDROID_BUILDS = {
     'JSS15Q': '4.3',
 
     'KRT16M': '4.4',
-    'KRT16O': '4.4',
+    'KRT16O': '4.4'
 };
 
 // Source: http://source.android.com/source/build-numbers.html

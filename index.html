@@ -5,6 +5,28 @@
         <meta charset="utf-8">
         <title>Which browser?</title>
 
+        <script type="text/javascript" src="js/data/definitions.js"></script>
+        <script type="text/javascript" src="js/data/build-android.js"></script>
+        <script type="text/javascript" src="js/data/id-android.js"></script>
+        <script type="text/javascript" src="js/data/models-android.js"></script>
+        <script type="text/javascript" src="js/data/models-bada.js"></script>
+        <script type="text/javascript" src="js/data/models-asha.js"></script>
+        <script type="text/javascript" src="js/data/models-blackberry.js"></script>
+        <script type="text/javascript" src="js/data/models-brew.js"></script>
+        <script type="text/javascript" src="js/data/models-feature.js"></script>
+        <script type="text/javascript" src="js/data/models-firefoxos.js"></script>
+        <script type="text/javascript" src="js/data/models-ios.js"></script>
+        <script type="text/javascript" src="js/data/models-s40.js"></script>
+        <script type="text/javascript" src="js/data/models-s60.js"></script>
+        <script type="text/javascript" src="js/data/models-tizen.js"></script>
+        <script type="text/javascript" src="js/data/models-touchwiz.js"></script>
+        <script type="text/javascript" src="js/data/models-wm.js"></script>
+        <script type="text/javascript" src="js/data/models-wp.js"></script>
+        <script type="text/javascript" src="js/data/profiles.js"></script>
+
+        <script type="text/javascript" src="js/libraries/utilities.js"></script>
+        <script type="text/javascript" src="js/libraries/whichbrowser.js"></script>
+
         <style>
 
             html {
@@ -74,66 +96,11 @@
     </head>
 
     <body>
-        <header>
-            <form action='' method='post'>
-                <div>
-                    <input type='text' name='useragent' placeholder='UA string' value='<?php echo isset($_REQUEST['useragent']) ? $_REQUEST['useragent'] : ''; ?>'>
-                </div>
-                <div>
-                    <textarea name='headers' placeholder='Headers'><?php echo isset($_REQUEST['headers']) ? $_REQUEST['headers'] : ''; ?></textarea>
-                </div>
+        <script type="text/javascript">
 
-                <input type='submit' value='Detect'>
+            var whichBrowser = new WhichBrowser()
 
-            </form>
-
-            <?php if($_SERVER['REQUEST_METHOD'] == 'POST'): ?>
-            <hr>
-            <div>
-                <pre><?php
-
-                    error_reporting(E_ALL);
-                    ini_set('display_errors', true);
-
-                    include('../libraries/whichbrowser.php');
-
-                    $headers = array();
-                    if (isset($_REQUEST['useragent']) && $_REQUEST['useragent'] != '')
-                    {
-                        $headers['User-Agent'] = $_REQUEST['useragent'];
-                    }
-
-                    if (isset($_REQUEST['headers']) && $_REQUEST['headers'] != '')
-                    {
-
-                        $h = explode("\n", $_REQUEST['headers']);
-                        for ($i = 0; $i < count($h); $i++)
-                        {
-                            @list($k, $v) = explode(':', $h[$i], 2);
-                            if ($k != '' && $v != '')
-                            {
-                                $headers[$k] = trim($v);
-                            }
-                        }
-                    }
-
-                    if (count($headers))
-                    {
-                        $options = array('headers' => $headers);
-                        $detected = new WhichBrowser($options);
-
-                        echo "{\n";
-                        if (isset($detected->browser)) echo "\tbrowser: " . htmlentities(json_encode($detected->browser)) . "\n";
-                        if (isset($detected->engine)) echo "\tengine: " . htmlentities(json_encode($detected->engine)) . "\n";
-                        if (isset($detected->os)) echo "\tos: " . htmlentities(json_encode($detected->os)) . "\n";
-                        if (isset($detected->device)) echo "\tdevice: " . htmlentities(json_encode($detected->device)) . "\n";
-                        echo "}";
-                    }
-
-                ?></pre>
-            </div>
-            <?php endif; ?>
-        </header>
+        </script>
 
     </body>
 </html>

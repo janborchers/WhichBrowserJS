@@ -1,6 +1,6 @@
-var TYPE_MOBILE = 'mobile';
-var TYPE_TABLET = 'tablet';
-var NULL = null;
+/* global TYPE_MOBILE*/
+/* global TYPE_TABLET*/
+/* global NULL*/
 
 var PROFILES = {
     'http://support.acer.com/uaprofile/Acer_E110_profile.xml': [ 'Acer', 'beTouch E110', 'Android', TYPE_MOBILE ],
