@@ -489,7 +489,7 @@ var WhichBrowser = (function (window) {
         this.os = {};
 
         this.camouflage = false;
-        this.features = {};
+        this.features = [];
 
         var that = this;
         getallheaders(function (headers) {
