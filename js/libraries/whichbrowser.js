@@ -94,41 +94,41 @@
 var getallheaders = function (cb) {
 
 
-    var xmlhttp = null;
-    /*@cc_on @*/
-    /*@if (@_jscript_version >= 5)
-    // JScript gives us Conditional compilation, we can cope with old IE versions.
-    // and security blocked creation of the objects.
     try
     {
-        xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
-    }
-    catch (e)
-    {
+        var xmlhttp = null;
+        /*@cc_on @*/
+        /*@if (@_jscript_version >= 5)
+        // JScript gives us Conditional compilation, we can cope with old IE versions.
+        // and security blocked creation of the objects.
         try
         {
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
         }
         catch (e)
         {
-            xmlhttp = false;
+            try
+            {
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            catch (e)
+            {
+                xmlhttp = false;
+            }
         }
-    }
-    @end @*/
+        @end @*/
 
-    if (!xmlhttp && typeof XMLHttpRequest !== 'undefined')
-    {
-        xmlhttp = new XMLHttpRequest();
+        if (!xmlhttp && typeof XMLHttpRequest !== 'undefined')
+        {
+            xmlhttp = new XMLHttpRequest();
 
-    }
-    if (!xmlhttp && window.createRequest)
-    {
-        xmlhttp = window.createRequest();
-    }
+        }
+        if (!xmlhttp && window.createRequest)
+        {
+            xmlhttp = window.createRequest();
+        }
 
-    if (xmlhttp)
-    {
-        xmlhttp.open("HEAD", document.location, false);
+        xmlhttp.open("HEAD", '', false);
 
         xmlhttp.onreadystatechange = function (event) {
 
@@ -141,8 +141,12 @@ var getallheaders = function (cb) {
 
                 for (var i = 0, l = headerlist.length; i < l; i += 1)
                 {
-                    item = headerlist[i].split(':');
-                    headers[item[0].trim()] = item[1].trim();
+                    item = headerlist[i];
+                    if (item)
+                    {
+                        item = item.split(':');
+                        headers[item[0].trim()] = item[1].trim();
+                    }
                 }
 
                 cb(headers);
@@ -151,9 +155,11 @@ var getallheaders = function (cb) {
         xmlhttp.send(null);
 
         return true;
+
     }
-    else
+    catch (exception)
     {
+        console.warn("Can't check headers:", exception);
         cb({});
         return false;
     }
@@ -404,8 +410,6 @@ var DeviceModels = {
 };
 
 
-
-
 var BrowserIds = {
 
     identify: function (type, model) {
@@ -423,7 +427,6 @@ var BrowserIds = {
         return list[id] || false;
     }
 };
-
 
 
 var BuildIds = {
