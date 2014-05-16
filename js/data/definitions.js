@@ -1,47 +1,60 @@
+'use strict';
 
-var _BASEPATH_ = '/';
+(function (window) {
 
-var TYPE_DESKTOP = 'desktop';
-var TYPE_MOBILE = 'mobile';
-var TYPE_TABLET = 'tablet';
-var TYPE_GAMING = 'gaming';
-var TYPE_EREADER = 'ereader';
-var TYPE_MEDIA = 'media';
-var TYPE_HEADSET = 'headset';
-var TYPE_WATCH = 'watch';
-var TYPE_EMULATOR = 'emulator';
-var TYPE_TELEVISION = 'television';
-var TYPE_MONITOR = 'monitor';
-var TYPE_CAMERA = 'camera';
-var TYPE_SIGNAGE = 'signage';
-var TYPE_WHITEBOARD = 'whiteboard';
-var TYPE_GPS = 'gps';
-var TYPE_CAR = 'car';
-var TYPE_POS = 'pos';
-var TYPE_BOT = 'bot';
+    window.WHICHBROWSER_DATA = {};
 
-var FLAG_GOOGLETV = 1;
-var FLAG_GOOGLEGLASS = 2;
+    window.WHICHBROWSER_DATA.DEFINITIONS = {
 
-var ID_NONE = 0;
-var ID_INFER = 1;
-var ID_PATTERN = 2;
-var ID_MATCH_UA = 4;
-var ID_MATCH_PROF = 8;
+        _BASEPATH_: '/',
 
-var ENGINE_TRIDENT = 1;
-var ENGINE_PRESTO = 2;
-var ENGINE_CHROMIUM = 4;
-var ENGINE_GECKO = 8;
-var ENGINE_WEBKIT = 16;
-var ENGINE_V8 = 32;
+        TYPE_DESKTOP: 'desktop',
+        TYPE_MOBILE: 'mobile',
+        TYPE_TABLET: 'tablet',
+        TYPE_GAMING: 'gaming',
+        TYPE_EREADER: 'ereader',
+        TYPE_MEDIA: 'media',
+        TYPE_HEADSET: 'headset',
+        TYPE_WATCH: 'watch',
+        TYPE_EMULATOR: 'emulator',
+        TYPE_TELEVISION: 'television',
+        TYPE_MONITOR: 'monitor',
+        TYPE_CAMERA: 'camera',
+        TYPE_SIGNAGE: 'signage',
+        TYPE_WHITEBOARD: 'whiteboard',
+        TYPE_GPS: 'gps',
+        TYPE_CAR: 'car',
+        TYPE_POS: 'pos',
+        TYPE_BOT: 'bot',
 
-var FEATURE_SANDBOX = 1;
-var FEATURE_WEBSOCKET = 2;
-var FEATURE_WORKER = 4;
-var FEATURE_APPCACHE = 8;
-var FEATURE_HISTORY = 16;
-var FEATURE_FULLSCREEN = 32;
-var FEATURE_FILEREADER = 64;
+        FLAG_GOOGLETV: 1,
+        FLAG_GOOGLEGLASS: 2,
 
-var NULL = null;
+        ID_NONE: 0,
+        ID_INFER: 1,
+        ID_PATTERN: 2,
+        ID_MATCH_UA: 4,
+        ID_MATCH_PROF: 8,
+
+        ENGINE_TRIDENT: 1,
+        ENGINE_PRESTO: 2,
+        ENGINE_CHROMIUM: 4,
+        ENGINE_GECKO: 8,
+        ENGINE_WEBKIT: 16,
+        ENGINE_V8: 32,
+
+        FEATURE_SANDBOX: 1,
+        FEATURE_WEBSOCKET: 2,
+        FEATURE_WORKER: 4,
+        FEATURE_APPCACHE: 8,
+        FEATURE_HISTORY: 16,
+        FEATURE_FULLSCREEN: 32,
+        FEATURE_FILEREADER: 64,
+
+        NULL: null
+
+    };
+
+
+}(window));
+

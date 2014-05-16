@@ -1,11 +1,17 @@
-var ASHA_MODELS = {
-    'Asha230DualSIM': ['Nokia', 'Asha 230'],
-    '500': ['Nokia', 'Asha 500'],
-    'Asha500DualSIM': ['Nokia', 'Asha 500'],
-    '501': ['Nokia', 'Asha 501'],
-    '501s': ['Nokia', 'Asha 501'],
-    '501.2': ['Nokia', 'Asha 501'],
-    '502': ['Nokia', 'Asha 502'],
-    '503': ['Nokia', 'Asha 503'],
-    '503s': ['Nokia', 'Asha 503']
-};
+'use strict';
+
+(function (window) {
+
+    window.WHICHBROWSER_DATA.ANDROID_MODELS.ASHA_MODELS = {
+        'Asha230DualSIM': ['Nokia', 'Asha 230'],
+        '500': ['Nokia', 'Asha 500'],
+        'Asha500DualSIM': ['Nokia', 'Asha 500'],
+        '501': ['Nokia', 'Asha 501'],
+        '501s': ['Nokia', 'Asha 501'],
+        '501.2': ['Nokia', 'Asha 501'],
+        '502': ['Nokia', 'Asha 502'],
+        '503': ['Nokia', 'Asha 503'],
+        '503s': ['Nokia', 'Asha 503']
+    };
+
+}(window));
