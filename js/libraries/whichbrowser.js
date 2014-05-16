@@ -482,81 +482,89 @@ var WhichBrowser = function (options) {
     this.camouflage = false;
     this.features = {};
 
-
+    var that = this;
     getallheaders(function (headers) {
 
-        this.headers = headers;
 
-        var ua = this.getHeader('User-Agent') || window.navigator.userAgent || '';
-        this.analyseUserAgent(ua);
+        that.options.headers = that.headers = headers;
 
-        ua = this.getHeader('X-Original-User-Agent');
+        var ua = that.getHeader('User-Agent') || window.navigator.userAgent || '';
+        that.analyseUserAgent(ua);
+
+        ua = that.getHeader('X-Original-User-Agent');
         if (ua)
         {
-            this.analyseAlternativeUserAgent(ua);
+            that.analyseAlternativeUserAgent(ua);
         }
 
-        ua = this.getHeader('X-Device-User-Agent');
+        ua = that.getHeader('X-Device-User-Agent');
         if (ua)
         {
-            this.analyseAlternativeUserAgent(ua);
+            that.analyseAlternativeUserAgent(ua);
         }
 
-        ua = this.getHeader('Device-Stock-UA');
+        ua = that.getHeader('Device-Stock-UA');
         if (ua)
         {
-            this.analyseAlternativeUserAgent(ua);
+            that.analyseAlternativeUserAgent(ua);
         }
 
-        ua = this.getHeader('X-OperaMini-Phone-UA');
+        ua = that.getHeader('X-OperaMini-Phone-UA');
         if (ua)
         {
-            this.analyseAlternativeUserAgent(ua);
+            that.analyseAlternativeUserAgent(ua);
         }
 
-        ua = this.getHeader('X-UCBrowser-Device-UA');
+        ua = that.getHeader('X-UCBrowser-Device-UA');
         if (ua)
         {
-            this.analyseAlternativeUserAgent(ua);
+            that.analyseAlternativeUserAgent(ua);
         }
 
-        ua = this.getHeader('X-UCBrowser-Phone-UA');
+        ua = that.getHeader('X-UCBrowser-Phone-UA');
         if (ua)
         {
-            this.analyseOldUCUserAgent(ua);
+            that.analyseOldUCUserAgent(ua);
         }
 
-        ua = this.getHeader('X-UCBrowser-UA');
+        ua = that.getHeader('X-UCBrowser-UA');
         if (ua)
         {
-            this.analyseNewUCUserAgent(ua);
+            that.analyseNewUCUserAgent(ua);
         }
 
-        ua = this.getHeader('X-Puffin-UA');
+        ua = that.getHeader('X-Puffin-UA');
         if (ua)
         {
-            this.analysePuffinUserAgent(ua);
+            that.analysePuffinUserAgent(ua);
         }
 
-        ua = this.getHeader('Baidu-FlyFlow');
+        ua = that.getHeader('Baidu-FlyFlow');
         if (ua)
         {
-            this.analyseBaiduHeader(ua);
+            that.analyseBaiduHeader(ua);
         }
 
-        ua = this.getHeader('X-Requested-With');
+        ua = that.getHeader('X-Requested-With');
         if (ua)
         {
-            this.analyseBrowserId(ua);
+            that.analyseBrowserId(ua);
         }
 
-        ua = this.getHeader('X-Wap-Profile');
+        ua = that.getHeader('X-Wap-Profile');
         if (ua)
         {
-            this.analyseWapProfile(ua);
+            that.analyseWapProfile(ua);
         }
 
-        this.detectCamouflage();
+        that.detectCamouflage();
+
+        if (that.cb)
+        {
+            that.cb(that)
+        }
+
+        that.ready = true;
 
     });
 
