@@ -464,15 +464,40 @@ var WhichBrowser = (function (window) {
         }
     };
 
+    var getQueryOptions = function () {
+
+        var options = {};
+
+        options.useragent = navigator.userAgent;
+
+        var e = 0;
+        e |= window.ActiveXObject ? 1 : 0;
+        e |= window.opera ? 2 : 0;
+        e |= window.chrome ? 4 : 0;
+        e |= 'getBoxObjectFor' in document || 'mozInnerScreenX' in window ? 8 : 0;
+        e |= ('WebKitCSSMatrix' in window || 'WebKitPoint' in window || 'webkitStorageInfo' in window || 'webkitURL' in window) ? 16 : 0;
+        e |= (e & 16 && ({}.toString).toString().indexOf("\n") === -1) ? 32 : 0;
+        options.engine = e;
+
+        var f = 0;
+        f |= 'sandbox' in document.createElement('iframe') ? 1 : 0;
+        f |= 'WebSocket' in window ? 2 : 0;
+        f |= window.Worker ? 4 : 0;
+        f |= window.applicationCache ? 8 : 0;
+        f |= window.history && history.pushState ? 16 : 0;
+        f |= document.documentElement.webkitRequestFullScreen ? 32 : 0;
+        f |= 'FileReader' in window ? 64 : 0;
+        options.features = f;
+
+        options.width = screen.width;
+        options.height = screen.height;
+
+        return options;
+
+    };
 
 
-
-
-
-    var WhichBrowser = function (options) {
-
-        this.options = options || {};
-
+    var WhichBrowser = function () {
 
         this.ready = false;
         this.browser = {
@@ -491,13 +516,14 @@ var WhichBrowser = (function (window) {
         this.camouflage = false;
         this.features = [];
 
+        this.options = getQueryOptions();
+
         var that = this;
         getallheaders(function (headers) {
 
-
             that.options.headers = that.headers = headers;
 
-            var ua = that.getHeader('User-Agent') || window.navigator.userAgent || '';
+            var ua = that.getHeader('User-Agent') || that.options.useragent || '';
             that.analyseUserAgent(ua);
 
             ua = that.getHeader('X-Original-User-Agent');
