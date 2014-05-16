@@ -449,16 +449,18 @@ var WhichBrowser = (function (window) {
                 case 'android':
                     return BuildIds.identifyList(ANDROID_BUILDS, $id);
             }
-
             return false;
+
         },
 
         identifyList: function (list, id) {
-            if (!!list[id])
+
+            if (list[id])
             {
                 return new Version({ value: list[id] });
             }
             return false;
+
         }
     };
 
