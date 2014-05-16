@@ -312,7 +312,7 @@ var DeviceModels = {
                 value = list[key];
                 if (key[key.length - 1] === "!")
                 {
-                    match = !!('/^' + key.substr(0, key.length - 1) + '/i').test(model);
+                    match = !!(new RegExp('/^' + key.substr(0, key.length - 1) + '/i')).test(model);
                 }
                 else
                 {
