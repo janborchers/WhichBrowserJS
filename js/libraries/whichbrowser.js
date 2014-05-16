@@ -4135,7 +4135,7 @@ WhichBrowser.prototype.analyseUserAgent = function (ua) {
 
             else
             {
-                switch (match[1].split('.').splice(0, 3).split('.'))
+                switch (match[1].split('.').splice(0, 3).join('.'))
                 {
                     case '0.2.149':
                     case '0.3.154':
@@ -5329,7 +5329,7 @@ WhichBrowser.prototype.analyseUserAgent = function (ua) {
 
         for (var b = 0; b < browsers.length; b += 1)
         {
-            match = browsers[b].regexp.exec(ua);
+            match = (new RegExp(browsers[b].regexp)).exec(ua);
             if (match)
             {
                 this.browser.name = browsers[b].name;
