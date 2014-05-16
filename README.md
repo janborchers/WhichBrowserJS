@@ -17,11 +17,15 @@ It just works by typing `node minify.js` on the cli.
 
 **Usage**
 
-    (new WhichBrowser()).onReady(function (info) {
+    <script type="text/javascript" src="whichbrowser-js-min.js"></script>
+    
+    <script type="text/javascript">
+        (new WhichBrowser()).onReady(function (info) {
 
-        doStuffWith(info);
+            doStuffWith(info);
 
-    });
+        });
+    </script>
 
 `info` is a JSON-structure looking roughly like this
 
