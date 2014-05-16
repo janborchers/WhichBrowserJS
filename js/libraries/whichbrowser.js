@@ -473,6 +473,8 @@ var WhichBrowser = (function (window) {
 
         this.options = options || {};
 
+
+        this.ready = false;
         this.browser = {
             stock: true,
             hidden: false,
