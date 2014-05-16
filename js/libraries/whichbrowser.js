@@ -28,6 +28,8 @@
 
 // /*global _BASEPATH_*/
 
+/*global console*/
+
 /*global TYPE_DESKTOP*/
 /*global TYPE_MOBILE*/
 /*global TYPE_TABLET*/
@@ -561,7 +563,7 @@ var WhichBrowser = function (options) {
 
         if (that.cb)
         {
-            that.cb(that)
+            that.cb(that);
         }
 
         that.ready = true;
