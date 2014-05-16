@@ -193,13 +193,11 @@ Version.prototype.toNumber = function () {
 
 
 
-function DeviceProfiles() {}
-
-DeviceProfiles.prototype.identify = function (url) {
-    return PROFILES[url] || false;
+var DeviceProfiles = {
+    identify: function (url) {
+        return PROFILES[url] || false;
+    }
 };
-
-
 
 
 var DeviceModels = {
