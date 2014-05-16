@@ -564,7 +564,7 @@ var WhichBrowser = (function (window) {
 
             if (that.cb)
             {
-                that.cb(that);
+                that.cb(that.toJSON());
             }
 
             that.ready = true;
@@ -6260,13 +6260,26 @@ var WhichBrowser = (function (window) {
     };
 
 
+    WhichBrowser.prototype.toJSON = function () {
+
+        return {
+            browser: this.browser,
+            device: this.device,
+            engine: this.engine,
+            os: this.os,
+            camouflage: this.camouflage,
+            features: this.features
+        };
+    };
+
+
     WhichBrowser.prototype.onReady = function (cb) {
 
         this.cb = cb;
 
         if (this.ready)
         {
-            this.cb(this);
+            this.cb(this.toJSON());
         }
 
     };
