@@ -6257,6 +6257,18 @@ WhichBrowser.prototype.analysePuffinUserAgent = function (ua) {
 };
 
 
+WhichBrowser.prototype.onReady = function (cb) {
+
+    this.cb = cb;
+
+    if (this.ready)
+    {
+        this.cb(this);
+    }
+
+};
+
+
 
 //    function toJavaScript()
 //    {
