@@ -36,69 +36,118 @@
 
             body {
                 background: #d9d9d9;
-                text-align: left;
+                text-align: center;
             }
 
-            header {
+            #container {
+                background: #fff;
                 width: 70%;
                 margin: 100px auto 50px;
                 padding: 30px;
+                font-size: 3em;
             }
 
-            a {
-                color: #0092bf;
-                text-decoration: none;
+            #container small {
+                display: block;
+                margin-top: 2em;
+                font-size: 0.3em;
+                line-height: 150%;
             }
-
-            a:hover {
-                text-decoration: underline;
-            }
-
-
-            input,
-            textarea {
-                font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", "Lucida Grande", sans-serif;
-                font-size: 14pt;
-                border: none;
-                padding: 10px;
-            }
-
-            input[type=text] {
-                width: 100%;
-            }
-
-            textarea {
-                width: 100%;
-                height: 100px;
-                margin: 10px 0;
-            }
-
-            input[type=submit] {
-                background: #0092bf;
-                color: #fff;
-                cursor: pointer;
-                width: 100px;
-                font-size: 13px;
-            }
-
-            hr {
-                border: none;
-                border-top: 1px solid #bbb;
-                margin: 40px 0;
-            }
-
-            pre {
-                text-align: left;
-            }
-
 
         </style>
     </head>
 
     <body>
+
+        <div id="container">
+            <div id="header"></div>
+            <small id="ua"></small>
+            <small id="test"></small>
+        </div>
+
+
         <script type="text/javascript">
 
-            var whichBrowser = new WhichBrowser()
+
+
+
+
+
+
+            var whichBrowser = new WhichBrowser();
+            whichBrowser.onReady(function (whichBrowser) {
+
+                console.log("wb:", whichBrowser);
+
+                var content = 'You are using ';
+
+                // browser
+                content += whichBrowser.browser.name + ' ';
+                if (whichBrowser.browser.version)
+                {
+                    if (whichBrowser.browser.version.alias)
+                    {
+                        content += whichBrowser.browser.version.alias;
+                    }
+                    else if (!whichBrowser.browser.version.details)
+                    {
+                        content += whichBrowser.browser.version.value;
+                    }
+                    else
+                    {
+                        var value = whichBrowser.browser.version.value.split('.');
+                        for (var i = 0, l = whichBrowser.browser.version.details; i < l; i += 1)
+                        {
+                            content += value[i] + (i < (l - 1) ? '.' : '');
+                        }
+                    }
+                }
+
+
+                // device
+                if (whichBrowser.device.type === 'desktop')
+                {
+                    content += ' on ';
+                }
+                else
+                {
+                    content += ' on a ';
+                    content += whichBrowser.device.manufacturer ? whichBrowser.device.manufacturer + ' ' : '';
+                    content += whichBrowser.device.model || '';
+                    content += ' running ';
+                }
+
+
+                // os
+                content += whichBrowser.os.name + ' ';
+                if (whichBrowser.os.version)
+                {
+                    if (whichBrowser.os.version.alias)
+                    {
+                        content += whichBrowser.os.version.alias;
+                    }
+                    else if (!whichBrowser.os.version.details)
+                    {
+                        content += whichBrowser.os.version.value;
+                    }
+                    else
+                    {
+                        var value = whichBrowser.os.version.value.split('.');
+                        for (var i = 0, l = whichBrowser.os.version.details; i < l; i += 1)
+                        {
+                            content += value[i] + (i < (l - 1) ? '.' : '');
+                        }
+                    }
+                }
+
+
+                document.getElementById('header').textContent = content;
+                document.getElementById('ua').textContent = navigator.userAgent;
+
+                document.getElementById('test').textContent = JSON.stringify(whichBrowser);
+
+            });
+
 
         </script>
 
