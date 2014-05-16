@@ -1,16 +1,16 @@
 WhichBrowserJS
 ==============
 
-This is a pure-frontend port of Niels Leenheer's [WhichBrowser]{https://github.com/NielsLeenheer/WhichBrowser} library.
+This is a pure-frontend port of Niels Leenheer's [WhichBrowser](https://github.com/NielsLeenheer/WhichBrowser) library.
 
 It's slightly less powerful than the original and might not be maintained as frequently ("maintained" as in "copied from WhichBrowser") as the original, but it works without a php-setup.
 
 
 **Dependencies**
 
-Should work out of the box if you just download [this file]{https://raw.githubusercontent.com/janborchers/WhichBrowserJS/master/whichbrowser-js-min.js}.
+Should work out of the box if you just download [this file](https://raw.githubusercontent.com/janborchers/WhichBrowserJS/master/whichbrowser-js-min.js).
 
-If you want to change it and use the included `minify.js` script you need [node-js]{http://nodejs.org/} with the [node-minify]{https://www.npmjs.org/package/node-minify} library installed.
+If you want to change it and use the included `minify.js` script you need [node-js](http://nodejs.org/) with the [node-minify](https://www.npmjs.org/package/node-minify) library installed.
 
 It just works by typing `node minify.js` on the cli.
 
@@ -58,7 +58,7 @@ It just works by typing `node minify.js` on the cli.
     }
 
 
-For more information about the reliability of this information and how exactly to interpret it, see (and ideally *use* in the first place) [the original library]{https://github.com/NielsLeenheer/WhichBrowser}.
+For more information about the reliability of this information and how exactly to interpret it, see (and ideally *use* in the first place) [the original library](https://github.com/NielsLeenheer/WhichBrowser).
 
 
 License
