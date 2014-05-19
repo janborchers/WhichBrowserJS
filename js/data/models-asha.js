@@ -3,6 +3,7 @@
 (function (window) {
 
     window.WHICHBROWSER_DATA.ANDROID_MODELS.ASHA_MODELS = {
+        'Asha230SingleSIM': [ 'Nokia', 'Asha 230' ],
         'Asha230DualSIM': ['Nokia', 'Asha 230'],
         '500': ['Nokia', 'Asha 500'],
         'Asha500DualSIM': ['Nokia', 'Asha 500'],
