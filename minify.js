@@ -5,6 +5,9 @@
 var compressor = require('node-minify');
 
 
+var version = '0.1.0';
+
+
 new compressor.minify({
     type: 'gcc',
     fileIn: [
@@ -28,7 +31,7 @@ new compressor.minify({
         'js/data/profiles.js',
         'js/libraries/whichbrowser.js'
     ],
-    fileOut: 'whichbrowser-js-min.js',
+    fileOut: 'whichbrowser-js-' + version + '-min.js',
     options: ['--compilation_level=SIMPLE_OPTIMIZATIONS'],
     callback: function(err, min){
         if (err)
@@ -46,3 +49,5 @@ new compressor.minify({
 
     }
 });
+
+
